@@ -315,7 +315,7 @@ def greenhouse(company):
 
 if __name__ == '__main__':
     misc_companies = [
-        block,
+        # block,
         pinterest,
         servicenow,
         snap,
