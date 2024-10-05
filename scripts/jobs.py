@@ -69,38 +69,38 @@ def snap():
     f.close()
     return
 
-def block():
-    COMPANY = 'block'
-    API = 'https://careers.smartrecruiters.com/Square/?search=security'
+# def block():
+#     COMPANY = 'block'
+#     API = 'https://careers.smartrecruiters.com/Square/?search=security'
 
-    res = requests.get(API)
-    if res.status_code != 200:
-        print('Something wrong: {}'.format(res.content))
-        return
+#     res = requests.get(API)
+#     if res.status_code != 200:
+#         print('Something wrong: {}'.format(res.content))
+#         return
 
-    soup = BeautifulSoup(res.content, 'html5lib')
-    # soup = BeautifulSoup(res.content, 'html5lib')
-    _el = soup.find('ul', attrs = {'data-page':'0'})
+#     soup = BeautifulSoup(res.content, 'html5lib')
+#     # soup = BeautifulSoup(res.content, 'html5lib')
+#     _el = soup.find('ul', attrs = {'data-page':'0'})
 
-    if _el:
-        raw_data = _el.contents
-    else:
-        return
+#     if _el:
+#         raw_data = _el.contents
+#     else:
+#         return
         
-    # raw_data = soup.find('ul', attrs = {'data-page':'0'}).contents
+#     # raw_data = soup.find('ul', attrs = {'data-page':'0'}).contents
 
-    f = open('./data/{}.md'.format(COMPANY), 'a+')
+#     f = open('./data/{}.md'.format(COMPANY), 'a+')
 
-    for data in raw_data:
-        job_title = data.find('h4').contents[0]
-        job_url = data.find('a')['href']
+#     for data in raw_data:
+#         job_title = data.find('h4').contents[0]
+#         job_url = data.find('a')['href']
         
-        text_to_write = '{} - {}\n\n'.format(job_title, job_url)
-        f.write(text_to_write)
-        print(text_to_write)
+#         text_to_write = '{} - {}\n\n'.format(job_title, job_url)
+#         f.write(text_to_write)
+#         print(text_to_write)
 
-    f.close()
-    return
+#     f.close()
+#     return
 
 def twitter():
     COMPANY = 'twitter'
