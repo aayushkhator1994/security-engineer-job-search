@@ -79,7 +79,15 @@ def block():
         return
 
     soup = BeautifulSoup(res.content, 'html5lib')
-    raw_data = soup.find('ul', attrs = {'data-page':'0'}).contents
+    # soup = BeautifulSoup(res.content, 'html5lib')
+    _el = soup.find('ul', attrs = {'data-page':'0'})
+
+    if _el:
+        raw_data = _el.contents
+    else:
+        return
+        
+    # raw_data = soup.find('ul', attrs = {'data-page':'0'}).contents
 
     f = open('./data/{}.md'.format(COMPANY), 'a+')
 
